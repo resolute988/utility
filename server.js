@@ -6,12 +6,13 @@ const mongoose = require("mongoose")
 const PORT = process.env.PORT || 5000
 const app = express()
 const UrlRoute = require("./Routes/Url")
+const CreditorDetails = require("./Routes/CreditorDetails")
 
 app.use(express.json())
 app.use(cors())
 
 app.use("/saveurl", UrlRoute)
-
+app.use("/creditordetails", CreditorDetails)
 mongoose.connect(process.env.ATLAS_MONGO_DB, {
   useNewUrlParser: true,
   useUnifiedTopology: true,
