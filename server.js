@@ -5,14 +5,15 @@ require("dotenv").config()
 const mongoose = require("mongoose")
 const PORT = process.env.PORT || 5000
 const app = express()
-const UrlRoute = require("./Routes/Url")
+const FileDetails = require("./Routes/FileDetails")
 const CreditorDetails = require("./Routes/CreditorDetails")
 
 app.use(express.json())
 app.use(cors())
 
-app.use("/saveurl", UrlRoute)
 app.use("/creditordetails", CreditorDetails)
+app.use("/filedetails", FileDetails)
+
 mongoose.connect(process.env.ATLAS_MONGO_DB, {
   useNewUrlParser: true,
   useUnifiedTopology: true,
