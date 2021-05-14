@@ -24,7 +24,7 @@ router.route("/").get(function (req, res) {
   const query = req.query
   console.log(query)
   try {
-    CreditorDetails.find(query)
+    CreditorDetails.findOne(query)
       .then(response => {
         res.status(200).send(response)
       })
