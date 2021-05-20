@@ -5,6 +5,7 @@ let CreditorDetails = new Schema(
   {
     creditor: { type: String },
     userId: { type: String },
+    folderId: { type: String },
     creditor_claim: { type: String },
     email_id: { type: String },
     first_name: { type: String },
