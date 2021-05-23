@@ -3,7 +3,7 @@ const CreditorDetails = require("../Model/CreditorDetails")
 
 router.route("/create").post(function (req, res) {
   const { body } = req
-  console.log(body)
+  console.log("our creditor details", body)
   try {
     let newCreditorDetails = new CreditorDetails(body)
 
@@ -22,7 +22,7 @@ router.route("/create").post(function (req, res) {
 })
 router.route("/").get(function (req, res) {
   const query = req.query
-  console.log(query)
+  console.log("creditor id", query)
   try {
     CreditorDetails.findOne(query)
       .then(response => {

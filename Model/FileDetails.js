@@ -1,7 +1,7 @@
 const mongoose = require("mongoose")
 const Schema = mongoose.Schema
 
-let newUrl = new Schema(
+let FileDetails = new Schema(
   {
     creditorId: { type: String },
     formName: { type: String },
@@ -14,4 +14,4 @@ let newUrl = new Schema(
   }
 )
 
-module.exports = mongoose.model("fileDetails", newUrl)
+module.exports = mongoose.model("FileDetails", FileDetails)

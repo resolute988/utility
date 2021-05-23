@@ -17,6 +17,7 @@ app.use("/filedetails", FileDetails)
 mongoose.connect(process.env.ATLAS_MONGO_DB, {
   useNewUrlParser: true,
   useUnifiedTopology: true,
+  useCreateIndex: true,
 })
 
 const connection = mongoose.connection
