@@ -4,6 +4,8 @@ const Schema = mongoose.Schema
 let CreditorDetails = new Schema(
   {
     creditor: { type: String },
+    amount_claimed: { type: Number },
+    amount_admitted: { type: Number },
     userId: { type: String },
     folderId: { type: String },
     creditor_claim: { type: String },
