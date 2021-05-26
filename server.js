@@ -8,7 +8,7 @@ const PORT = process.env.PORT
 const app = express()
 const FileDetails = require("./Routes/FileDetails")
 const CreditorDetails = require("./Routes/CreditorDetails")
-const buildPath = path.join(__dirname + "/build")
+const buildPath = path.join(__dirname + "/.."+"/dcirrus-front-end/build")
 
 app.use(express.json())
 app.use(cors())
