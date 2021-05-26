@@ -20,8 +20,7 @@ app.use("/api/filedetails", FileDetails)
 app.get("/*", (req, res) => {
   res.sendFile(path.join(buildPath, "/index.html"))
 })
-// process.env.PRODUCTION
-mongoose.connect(process.env.DEVELOPMENT, {
+mongoose.connect(process.env.PRODUCTION, {
   useNewUrlParser: true,
   useUnifiedTopology: true,
   useCreateIndex: true,

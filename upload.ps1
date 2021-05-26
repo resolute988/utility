@@ -6,7 +6,6 @@ function gitPush($message){
  git add . 
  git commit -m $message 
  git push origin master  
- git push heroku master
  
 }
   gitPush -message $args[0]
