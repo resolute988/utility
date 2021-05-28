@@ -3,11 +3,8 @@ var TinyURL = require('tinyurl');
  
 router.route("/").get((req,res)=>{
 try {
-
     const query= req.query
-    const _longUrl=query.url
-   console.log("welcome ",_longUrl)
-
+    const _longUrl=decodeURIComponent(query.url)
     TinyURL.shorten(_longUrl, function(response, err) {
       if (err)
         {console.log(err)}

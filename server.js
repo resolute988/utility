@@ -1,4 +1,5 @@
 console.clear()
+console.log("\n")
 const cors = require("cors")
 const express = require("express")
 const path = require("path")
@@ -9,13 +10,13 @@ const app = express()
 const FileDetails = require("./Routes/FileDetails")
 const CreditorDetails = require("./Routes/CreditorDetails")
 const shortUrl = require("./Routes/shortUrl")
-const { urlencoded } = require("body-parser")
 
 const buildPath = path.join(__dirname + "/.."+"/dcirrus-front-end/build")
 
 app.use(express.json())
 app.use(cors())
 app.use(express.static(buildPath))
+
 app.use("/api/creditordetails", CreditorDetails)
 app.use("/api/filedetails", FileDetails)
 app.use('/api/urlshortener',shortUrl)
