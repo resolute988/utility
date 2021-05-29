@@ -10,6 +10,7 @@ const app = express()
 const FileDetails = require("./Routes/FileDetails")
 const CreditorDetails = require("./Routes/CreditorDetails")
 const shortUrl = require("./Routes/shortUrl")
+const totalClaims= require("./Routes/totalClaims")
 
 const buildPath = path.join(__dirname + "/.."+"/dcirrus-front-end/build")
 
@@ -20,6 +21,7 @@ app.use(express.static(buildPath))
 app.use("/api/creditordetails", CreditorDetails)
 app.use("/api/filedetails", FileDetails)
 app.use('/api/urlshortener',shortUrl)
+app.use("/api/totalclaims/",totalClaims)
 
 app.get("/*", (req, res) => {
   res.sendFile(path.join(buildPath, "/index.html"))
