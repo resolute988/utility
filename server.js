@@ -21,7 +21,8 @@ app.use(express.static(buildPath))
 app.use("/api/creditordetails", CreditorDetails)
 app.use("/api/filedetails", FileDetails)
 app.use('/api/urlshortener',shortUrl)
-app.use("/api/totalclaims/",totalClaims)
+app.use("/api/totalclaims",totalClaims)
+
 
 app.get("/*", (req, res) => {
   res.sendFile(path.join(buildPath, "/index.html"))

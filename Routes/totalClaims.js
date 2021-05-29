@@ -23,8 +23,10 @@ router.route("/").get(function (req, res) {
        }}
        ])
         .then(response => {
-        const obj={...response[0].operational_claim[0],...response[0].financial_claim[0]}
-          res.status(200).send(obj)
+        const operational_claim=response[0].operational_claim[0]?.operational_claim || 0
+        const financial_claim=response[0].financial_claim[0]?.financial_claim     || 0
+          
+        res.status(200).send({operational_claim,financial_claim})
         })
         .catch(err => {
           res.status(400).send({ Error: err })
