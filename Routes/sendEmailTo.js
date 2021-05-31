@@ -24,6 +24,8 @@ const sendEmail= (email,subject,html,feedback)=>{
     } else {
        feedback.push(info)
     }
+if(feedback.length===2)
+    res.status(200).send(feedback)
   });
 
 }
@@ -65,7 +67,6 @@ var feedback=[]
         K 1/125 LGF, CR Park, New Delhi, 110019`
        
         sendEmailTo(obj.rp_email,subject,html,feedback)
-        res.status(200).send(feedback)
     } catch (error) {
         res.status(400).send({err:error})
     }
