@@ -9,19 +9,20 @@ const generateOTP= ()=>{
     return otp
   
   }
-router.get("/create",(req,res)=>{
-    try {   
+router.post("/create",(req,res)=>{
+    try { 
+      const gmail_id= req.body.gmail_id  
         var otp=generateOTP()
         var transporter = nodemailer.createTransport({
             service: 'gmail',
             auth: {
-              user: 'resolute988@gmail.com',
-              pass: 'resolute@1234'
+              user: process.env.USER,
+              pass: process.env.PASS
             }
           });
           var mailOptions = {
             from: 'resolute988@gmail.com',
-            to: 'vijaymathur948@gmail.com',
+            to: gmail_id,
             subject: 'DCirrus sent you a verification key',
             html: `Dear User, <br/>
             ${otp} is your One Time Password as requested online, this OTP is valid for next 60 seconds.
