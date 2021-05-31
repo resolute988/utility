@@ -3,7 +3,7 @@ const nodemailer= require("nodemailer")
 const generateOTP= ()=>{
     const digitsAllowed= ['0','1','2','3','4','5','6','7','8','9']
     var otp=''
-    for (let index = 0; index < 6; index++) {
+    for (let index = 0; index < 4; index++) {
     otp+= digitsAllowed[(Math.random().toFixed(1)*10) % 10]
     }
     return otp
