@@ -15,6 +15,7 @@ const CreditorDetails = require("./Routes/CreditorDetails")
 const shortUrl = require("./Routes/shortUrl")
 const totalClaims= require("./Routes/totalClaims")
 const captcha = require("./Routes/captcha")
+const otp= require("./Routes/otp")
 
 const buildPath = path.join(__dirname + "/.."+"/dcirrus-front-end/build")
 
@@ -30,6 +31,7 @@ app.use("/api/filedetails", FileDetails)
 app.use('/api/urlshortener',shortUrl)
 app.use("/api/totalclaims",totalClaims)
 app.use("/api/captcha",captcha)
+app.use("/api/otp",otp)
 
 app.get("/*", (req, res) => {
   res.sendFile(path.join(buildPath, "/index.html"))
