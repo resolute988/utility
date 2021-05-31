@@ -8,6 +8,8 @@ router.get("/create",(req,res)=>{
         charPreset:'0123456789',
       });
       req.session.captcha = captcha.text;
+
+      console.log("captcha generate",req.session.captcha)
     res.type('svg');
     res.status(200).send(captcha.data);
         
@@ -20,6 +22,7 @@ router.get("/create",(req,res)=>{
 router.post("/verify",(req,res)=>{
    try {
     const captcha= req.body.captcha
+console.log("captcha verify ",captcha,req.session.captcha)
 
     if(captcha===req.session.captcha)
     {
