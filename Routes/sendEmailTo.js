@@ -1,6 +1,5 @@
 const router= require("express").Router()
 const nodemailer= require("nodemailer");
-const { sendEmailTo } = require("../../dcirrus-front-end/src/Components/APIFolder/api");
 
 const sendEmail= (email,subject,html,feedback)=>{
   
