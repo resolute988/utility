@@ -24,7 +24,7 @@ router.post("/verify",(req,res)=>{
     const captcha= req.body.captcha
 console.log("captcha verify ",captcha,req.session.captcha)
 
-    if(captcha===req.session.captcha)
+    if( captcha===req.session.captcha)
     {
         res.status(200).send({response:true})
     }else{

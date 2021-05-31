@@ -5,7 +5,6 @@ let FileDetails = new Schema(
   {
     creditorId: { type: String },
     formName: { type: String },
-    folderId: { type: String },
     fileName: { type: String },
     fileSize: { type: Number },
   },

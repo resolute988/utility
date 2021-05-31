@@ -59,7 +59,7 @@ router.post("/verify",(req,res)=>{
    try {
     const otp= req.body.otp
     console.log("otp verify ",otp,req.session.otp)
-    if(otp===req.session.otp)
+    if( otp===req.session.otp)
     {
         res.status(200).send({response:true})
     }else{
