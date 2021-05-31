@@ -22,13 +22,11 @@ const sendEmail= (email,subject,html,feedback)=>{
     if (error) {
       console.log(error);
     } else {
-       feedback.push(info)
+      res.status(200).send(feedback);
     }
-if(feedback.length===2)
-    res.status(200).send(feedback)
-  });
-
+  })
 }
+
 router.post("/",(req,res)=>{
 var feedback=[]
     try { 
