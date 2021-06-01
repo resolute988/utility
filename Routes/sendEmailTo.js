@@ -1,14 +1,18 @@
 const router= require("express").Router()
 const nodemailer= require("nodemailer");
 
-
 router.post("/claimant",(req,res)=>{
-    try { 
+    try {
+  console.log("claimant body",req.files,req.body)
       if(req.body.email!==undefined)
       {
-      console.log("body",req.body)
         const email= req.body.email
-   
+        var files=[]
+
+         req.files.file.map(obj=>{
+           files.push({filename:obj.name,content:new Buffer.from(obj.data)})
+         })
+
       const subject=`Claim Filed Before NAMEXXXXXXX on DATE XXXX claimant `
       const html=`Welcome to Resolute, <br/>
       You claim has been successfully filed on datexxxxxxxx timexxxxxx before name xxxxxxxxxxxxxxxxx with the following attachments :  <br/>
@@ -37,7 +41,8 @@ router.post("/claimant",(req,res)=>{
     from: 'resolute988@gmail.com',
     to: email,
     subject:subject,
-    html: html 
+    html: html ,
+    attachments: files
   };
   
   transporter.sendMail(mailOptions, function(error, info){

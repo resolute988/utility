@@ -8,6 +8,7 @@ const mongoose = require("mongoose")
 const PORT = process.env.PORT
 var cookieParser = require('cookie-parser');
 var session = require('express-session');
+var fileupload= require("express-fileupload")
 
 const app = express()
 const FileDetails = require("./Routes/FileDetails")
@@ -25,6 +26,7 @@ app.use(session({secret: "Shh, its a secret!"}));
 
 app.use(express.json())
 app.use(cors())
+app.use(fileupload())
 app.use(express.static(buildPath))
 
 app.use("/api/creditordetails", CreditorDetails)
