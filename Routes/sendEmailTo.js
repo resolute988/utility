@@ -81,7 +81,7 @@ router.post("/rp",(req,res)=>{
        req.body.files.map((fileName,index)=>{
          list+=`${index+1}. ${fileName}  <br/>`
        })
-    const subject=`Claim Filed Before ${claimant_name} on ${getDate()}`
+    const subject=`Claim Filed By ${claimant_name} on ${getDate()}`
     const html=`Welcome, <br/>
     The Claim has been filed on ${getDate()} ${getTime()} by <b>${claimant_name}</b> with the following documents :  <br/>
     <br/>  <br/> 
