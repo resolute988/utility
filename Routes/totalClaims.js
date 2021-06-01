@@ -10,12 +10,12 @@ router.route("/").get(function (req, res) {
         [
       { "$facet": {
          "operational_claim": [
-             { "$match": {"userId":user_id,"folderId":folder_id,"creditor_claim":"operational"
+             { "$match": {"rp_id":user_id,"folderId":folder_id,"creditor_claim":"operational"
      }},
              { "$count": "operational_claim" }
          ],
          "financial_claim": [
-             { "$match": {"userId":user_id,"folderId":folder_id,"creditor_claim":"financial"
+             { "$match": {"rp_id":user_id,"folderId":folder_id,"creditor_claim":"financial"
      }},
              { "$count": "financial_claim" }
          ]
