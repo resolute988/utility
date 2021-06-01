@@ -1,5 +1,13 @@
 const router= require("express").Router()
 const nodemailer= require("nodemailer");
+const dateFormat= require("dateformat")
+
+const getDate= ()=>{
+  return dateFormat(new Date(), "dS mmmm, yyyy ")
+}
+const getTime= ()=>{
+  return dateFormat(new Date(), " h:MM:ss TT ")
+}
 
 router.post("/claimant",(req,res)=>{
     try {
@@ -7,20 +15,17 @@ router.post("/claimant",(req,res)=>{
       if(req.body.email!==undefined)
       {
         const email= req.body.email
+        const rp_name= req.body.rp_name
         var files=[]
 
          req.files.file.map(obj=>{
            files.push({filename:obj.name,content:new Buffer.from(obj.data)})
          })
 
-      const subject=`Claim Filed Before NAMEXXXXXXX on DATE XXXX claimant `
+      const subject=`Claim Filed Before ${rp_name} on ${getDate()}  `
       const html=`Welcome to Resolute, <br/>
-      You claim has been successfully filed on datexxxxxxxx timexxxxxx before name xxxxxxxxxxxxxxxxx with the following attachments :  <br/>
-      1. <br/> 
-      2. <br/> 
-      3. <br/> 
-      4. <br/> 
-      
+      You claim has been successfully filed on ${getDate()} ${getTime()} by ${rp_name} with the following attachments :  <br/>
+      <br /> <br/>
       Thanks <br/>
       Team DCirrus <br/>
       For any further assistance, please contact your support team at support@dcirrus.com <br/>
@@ -65,20 +70,25 @@ router.post("/claimant",(req,res)=>{
 })
 
 router.post("/rp",(req,res)=>{
+  console.log("Rp request body",req.body)
   try { 
     if(req.body.email!==undefined)
     {
     console.log("body",req.body)
       const email= req.body.email
+      const claimant_name= req.body.claimant_name
+
+      var list=''
+       req.body.files.map((fileName,index)=>{
+         list+=`${index+1}. ${fileName}  <br/>`
+       })
+ console.log("rp files",list)
+    const subject=`Claim Filed Before ${rp_name} on ${getDate()}`
+    const html=`Welcome, <br/>
+    The Claim has been filed on ${getDate()} ${getTime()} by ${claimant_name} with the following documents :  <br/>
+    <br/>  <br/> 
  
-    const subject=`Claim Filed Before NAMEXXXXXXX on DATE XXXX  RP`
-    const html=`Welcome to Resolute, <br/>
-    You claim has been successfully filed on datexxxxxxxx timexxxxxx before name xxxxxxxxxxxxxxxxx with the following attachments :  <br/>
-    1. <br/> 
-    2. <br/> 
-    3. <br/> 
-    4. <br/> 
-    
+    ${list} <br/> 
     Thanks <br/>
     Team DCirrus <br/>
     For any further assistance, please contact your support team at support@dcirrus.com <br/>
