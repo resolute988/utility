@@ -24,7 +24,7 @@ router.post("/claimant",(req,res)=>{
 
       const subject=`Claim Filed Before ${rp_name} on ${getDate()}  `
       const html=`Welcome to Resolute, <br/>
-      You claim has been successfully filed on ${getDate()} ${getTime()} by <b>${rp_name}</> with the following attachments :  <br/>
+      You claim has been successfully filed on ${getDate()} ${getTime()} by <b>${rp_name}</b> with the following attachments :  <br/>
       <br /> <br/>
       Thanks <br/>
       Team DCirrus <br/>
@@ -83,7 +83,7 @@ router.post("/rp",(req,res)=>{
        })
     const subject=`Claim Filed Before ${claimant_name} on ${getDate()}`
     const html=`Welcome, <br/>
-    The Claim has been filed on ${getDate()} ${getTime()} by ${claimant_name} with the following documents :  <br/>
+    The Claim has been filed on ${getDate()} ${getTime()} by <b>${claimant_name}</b> with the following documents :  <br/>
     <br/>  <br/> 
  
     ${list} <br/> 
