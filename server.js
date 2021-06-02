@@ -5,7 +5,7 @@ const express = require("express")
 const path = require("path")
 require("dotenv").config()
 const mongoose = require("mongoose")
-const PORT = process.env.PORT
+const PORT = 80 || process.env.PORT
 var cookieParser = require('cookie-parser');
 var session = require('express-session');
 var fileupload= require("express-fileupload")
@@ -18,6 +18,8 @@ const totalClaims= require("./Routes/totalClaims")
 const captcha = require("./Routes/captcha")
 const otp= require("./Routes/otp")
 const sendEmailTo= require("./Routes/sendEmailTo")
+const exportLogs= require("./Routes/exportLogs")
+
 
 const buildPath = path.join(__dirname + "/.."+"/dcirrus-front-end/build")
 
@@ -36,6 +38,7 @@ app.use("/api/totalclaims",totalClaims)
 app.use("/api/captcha",captcha)
 app.use("/api/otp",otp)
 app.use("/api/send",sendEmailTo)
+app.use("/api/exportlogs",exportLogs)
 
 app.get("/*", (req, res) => {
   res.sendFile(path.join(buildPath, "/index.html"))
