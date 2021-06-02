@@ -15,7 +15,6 @@ router.route("/create").post(function (req, response) {
     try {
       // Setup stuff
       var query = {
-        folderId: { $eq: doc.folderId },
         fileName: { $eq: doc.fileName },
       }
       var update = { fileSize: doc.fileSize }

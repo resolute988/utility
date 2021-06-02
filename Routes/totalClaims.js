@@ -1,21 +1,20 @@
 const router= require('express').Router()
 const CreditorDetails = require("../Model/CreditorDetails")
 
-router.route("/").get(function (req, res) {
-    const query = req.query
-    const {user_id,folder_id}= query
-    console.log("RP userId and Company folder Id ", query)
+router.route("/").post(function (req, res) {
+    const {rp_id,rootFolderId} = req.body
+    console.log("RP userId and Company folder Id ", body)
     try {
       CreditorDetails.aggregate(
         [
       { "$facet": {
          "operational_claim": [
-             { "$match": {"rp_id":user_id,"folderId":folder_id,"creditor_claim":"operational"
+             { "$match": {"rp_id":rp_id,"rootFolderId":rootFolderId,"creditor_claim":"operational"
      }},
              { "$count": "operational_claim" }
          ],
          "financial_claim": [
-             { "$match": {"rp_id":user_id,"folderId":folder_id,"creditor_claim":"financial"
+             { "$match": {"rp_id":rp_id,"rootFolderId":rootFolderId,"creditor_claim":"financial"
      }},
              { "$count": "financial_claim" }
          ]
