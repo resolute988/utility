@@ -1,10 +1,10 @@
 const router=require("express").Router()
 var TinyURL = require('tinyurl');
  
-router.route("/").get((req,res)=>{
+router.route("/").post((req,res)=>{
 try {
-    const query= req.query
-    const _longUrl=decodeURIComponent(query.url)
+    const {url}= req.body
+    const _longUrl=decodeURIComponent(url)
     TinyURL.shorten(_longUrl, function(response, err) {
       if (err)
         {console.log(err)}
