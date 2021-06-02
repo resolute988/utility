@@ -2,7 +2,11 @@ const router= require('express').Router()
 const CreditorDetails = require("../Model/CreditorDetails")
 
 router.route("/").post(function (req, res) {
-    const {rp_id,rootFolderId} = req.body
+    var {rp_id,rootFolderId} = req.body
+//  we are receiving these integer value but we need string representation of these value
+    rp_id=rp_id.toString()
+    rootFolderId= rootFolderId.toString()
+
     console.log("RP userId and Company folder Id ", req.body)
     try {
       CreditorDetails.aggregate(
