@@ -3,7 +3,7 @@ const CreditorDetails = require("../Model/CreditorDetails")
 
 router.route("/").post(function (req, res) {
     const {rp_id,rootFolderId} = req.body
-    console.log("RP userId and Company folder Id ", body)
+    console.log("RP userId and Company folder Id ", req.body)
     try {
       CreditorDetails.aggregate(
         [
