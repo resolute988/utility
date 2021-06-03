@@ -22,7 +22,7 @@ router.post("/claimant",(req,res)=>{
            files.push({filename:obj.name,content:new Buffer.from(obj.data)})
          })
 
-      const subject=`Claim Filed Before <b>${rp_name}</b> on ${getDate()}  `
+      const subject=`Claim Filed Before ${rp_name} on ${getDate()}  `
       const html=`Welcome to Resolute, <br/>
       You claim has been successfully filed on <b>${getDate()}</b> <b>${getTime()}</b> by <b>${rp_name}</b> with the following attachments :  <br/>
       <br /> <br/>
@@ -81,7 +81,7 @@ router.post("/rp",(req,res)=>{
        req.body.files.map((fileName,index)=>{
          list+=`${index+1}. ${fileName}  <br/>`
        })
-    const subject=`Claim Filed By <b>${claimant_name}</b> on ${getDate()}`
+    const subject=`Claim Filed By ${claimant_name} on ${getDate()}`
 
     const html=`Welcome, <br/>
     The Claim has been filed on <b>${getDate()}</b> <b>${getTime()}</b> by <b>${claimant_name}</b> with the following documents :  <br/>
