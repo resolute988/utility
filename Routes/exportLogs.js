@@ -14,7 +14,7 @@ try{
         response.map(obj=>{
             var {creditor,first_name,last_name,email_id,phone_number,amount_claimed,amount_admitted,creditor_claim}=obj
             first_name+=" "+last_name
-           d_response.push({'Co. Company' :creditor,'Name':first_name,'Email':email_id,'Mobile':phone_number,'Amount Claimed':amount_claimed,'Amount Admitted':amount_admitted,'Creditor Type':creditor_claim}) 
+           d_response.push({'Co. Name' :creditor,'Name of the Person':first_name,'Email':email_id,'Mobile':phone_number,'Total Claim':amount_claimed,'Admitted Claim':amount_admitted,'Creditor Type':creditor_claim}) 
         })
 
         res.status(200).send({response:d_response})
