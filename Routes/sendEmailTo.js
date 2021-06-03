@@ -3,10 +3,10 @@ const nodemailer= require("nodemailer");
 const dateFormat= require("dateformat")
 
 const getDate= ()=>{
-  return dateFormat(new Date(), "dS mmmm, yyyy ")
+  return dateFormat(new Date().toLocaleString("en-US",{timeZone:"Asia/Calcutta"}), "dS mmmm, yyyy ")
 }
 const getTime= ()=>{
-  return dateFormat(new Date(), " h:MM:ss TT ")
+  return dateFormat(new Date().toLocaleString("en-US",{timeZone:"Asia/Calcutta"}), " h:MM:ss TT ")
 }
 
 router.post("/claimant",(req,res)=>{
@@ -82,6 +82,7 @@ router.post("/rp",(req,res)=>{
          list+=`${index+1}. ${fileName}  <br/>`
        })
     const subject=`Claim Filed By ${claimant_name} on ${getDate()}`
+
     const html=`Welcome, <br/>
     The Claim has been filed on ${getDate()} ${getTime()} by <b>${claimant_name}</b> with the following documents :  <br/>
     <br/>  <br/> 
